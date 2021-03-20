@@ -1,6 +1,6 @@
 import React from 'react'
 import { render } from 'enzyme'
-import { UALError, UALErrorType } from 'universal-authenticator-library'
+import { UALError, UALErrorType } from '@arisenual/core'
 import { UALErrorMessage } from '../src/components/info/UALErrorMessage'
 
 describe('UALErrorMessage', () => {

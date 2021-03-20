@@ -30,7 +30,7 @@ module.exports = {
         test: /\.(js)$/,
         exclude: /node_modules/,
         include: [
-          '/node_modules/@blockone/universal-authenticator-library',
+          '/node_modules/@arisenual/core',
           path.join(__dirname, '../')
         ],
         loader: "babel-loader",

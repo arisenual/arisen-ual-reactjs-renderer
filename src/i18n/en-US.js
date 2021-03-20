@@ -7,10 +7,10 @@ export default {
   loadingAuthenticators: th('Loading Authenticators...'),
   enterUsername: th('Next, please enter your username'),
   learnMore: th('Learn more'),
-  learnMoreText: th('This option allows you to connect to your favorite key manager app.'),
+  learnMoreText: th('This option allows you to connect to your favorite dWeb authenticator.'),
   learnMoreAccept: th('I got it!'),
   selectALoginService: th('Please select a service to log in'),
-  accountName: th('Account Name'),
+  accountName: th('User Name'),
   continue: th('Continue'),
   noAvailableAuthenticatorsTitle: th('Pardon the interruption'),
   noAvailableAuthenticatorsContent: th(`It looks like you have no available authenticators.  Select the 

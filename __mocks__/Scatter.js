@@ -1,7 +1,7 @@
-import { Authenticator } from 'universal-authenticator-library'
+import { Authenticator } from '@arisenual/core'
 
-const ScatterJS = {
-  scatter: {
+const PeepsIdJS = {
+  peepsid: {
     connect: (appName) => {
       if (appName === 'My Working App') {
         return true
@@ -11,55 +11,55 @@ const ScatterJS = {
   },
 }
 
-const scatter = {
+const peepsid = {
   logout: () => {},
 }
 
-class UALScatterError {
+class UALPeepsAuthError {
   constructor(message, type, error) {
     this.message = message
     this.type = type
     this.error = error
-    this.source = 'Scatter'
+    this.source = 'PeepsID'
   }
 }
 
-class ScatterUser {
-  constructor(chain, scatter) {
+class PeepsAuthUser {
+  constructor(chain, peepsid) {
     this.chain = chain
-    this.scatter = scatter
+    this.peepsid = peepsid
   }
 
   getKeys() {
-    if (this.scatter) {
+    if (this.peepsid) {
       return Promise.resolve('keys!')
     }
     throw new Error()
   }
 }
 
-export class Scatter extends Authenticator {
+export class PeepsID extends Authenticator {
   constructor(chains, options = { appName: '' }) {
     super(chains)
     this.appName = options.appName
-    this.scatterIsLoading = false
+    this.peepsidIsLoading = false
     this.initError = null
-    this.scatter = false
+    this.peepsid = false
   }
 
   async init() {
-    this.scatterIsLoading = false
-    if (!await ScatterJS.scatter.connect(this.appName)) {
-      this.initError = new UALScatterError('Error occurred while connecting',
+    this.peepsidIsLoading = false
+    if (!await PeepsIdJS.peepsid.connect(this.appName)) {
+      this.initError = new UALPeepsAuthError('Error occurred while connecting',
         'initialization',
         null)
 
-      this.scatterIsLoading = false
+      this.peepsidIsLoading = false
 
       return
     }
-    this.scatter = scatter
-    this.scatterIsLoading = false
+    this.peepsid = peepsid
+    this.peepsidIsLoading = false
   }
 
   isLoading() {
@@ -77,7 +77,7 @@ export class Scatter extends Authenticator {
   getStyle() {
     return {
       icon: 'logo',
-      text: 'Scatter',
+      text: 'PeepsID',
       textColor: 'white',
       background: '#62D0FD',
     }
@@ -98,14 +98,14 @@ export class Scatter extends Authenticator {
   async login() {
     try {
       for (const chain of this.chains) {
-        const user = new ScatterUser(chain, this.scatter)
+        const user = new PeepsAuthUser(chain, this.peepsid)
         await user.getKeys()
         this.users.push(user)
       }
 
       return this.users
     } catch (e) {
-      throw new UALScatterError(
+      throw new UALPeepsAuthError(
         'Unable to login',
         'login',
         e,
@@ -115,9 +115,9 @@ export class Scatter extends Authenticator {
 
   async logout() {
     try {
-      this.scatter.logout()
+      this.peepsid.logout()
     } catch (error) {
-      throw new UALScatterError('Error occurred during logout',
+      throw new UALPeepsAuthError('Error occurred during logout',
         'logout',
         error)
     }
@@ -128,6 +128,6 @@ export class Scatter extends Authenticator {
   }
 
   getName() {
-    return 'scatter'
+    return 'peepsid'
   }
 }

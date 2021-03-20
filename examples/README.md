@@ -1,6 +1,6 @@
 # Basic Example App for UAL with ReactJS
 
-This example demonstrates an implementation of the [Universal Authenticator Library Renderer for ReactJS](https://github.com/EOSIO/ual-reactjs-renderer) in a simple EOS transfer DAPP.  It uses the [UAL for Scatter Authenticator](https://github.com/EOSIO/ual-scatter) and [UAL for Ledger Authenticator](https://github.com/EOSIO/ual-ledger) authenticators.
+This example demonstrates an implementation of the [Universal Authenticator Library Renderer for ReactJS](https://github.com/EOSIO/@arisenual/reactjs-renderer) in a simple EOS transfer DAPP.  It uses the [UAL for PeepsID Authenticator](https://github.com/EOSIO/@arisenual/peepsid-desktop) and [UAL for Ledger Authenticator](https://github.com/EOSIO/@arisenual/ledger) authenticators.
 
 ![EOSIO Labs](https://img.shields.io/badge/EOSIO-Labs-5cb3ff.svg)
 
@@ -30,7 +30,7 @@ In the main file of this demo, ``src/ButtonWebViewReact.tsx``, a ``demoTransacti
 ```javascript
 const demoTransaction = {
   actions: [{
-    account: 'eosio.token',
+    account: 'arisen.token',
     name: 'transfer',
     authorization: [{
       actor: '', // use account that was logged in
@@ -39,7 +39,7 @@ const demoTransaction = {
     data: {
       from: '', // use account that was logged in
       to: 'example',
-      quantity: '1.0000 EOS',
+      quantity: '1.0000 RIX',
       memo: 'UAL rocks!',
     },
   }],

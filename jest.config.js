@@ -4,7 +4,7 @@ module.exports = {
   coverageDirectory: 'coverage',
   moduleFileExtensions: ['js', 'json', 'jsx'],
   moduleNameMapper: {
-    'ual-scatter': '<rootDir>/__mocks__/Scatter.js',
+    '@arisenual/peepsid-desktop': '<rootDir>/__mocks__/PeepsID.js',
     'providerProps': '<rootDir>/__mocks__/providerProps.js',
     'localStorageMock': '<rootDir>/__mocks__/localStorageMock.js',
     'UALAccountInputProps': '<rootDir>/__mocks__/UALAccountInputProps.js',

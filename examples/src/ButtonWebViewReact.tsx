@@ -1,15 +1,15 @@
-import { Ledger } from 'ual-ledger'
-import { Lynx } from 'ual-lynx'
-import { Scatter } from 'ual-scatter'
-import { UALProvider, withUAL } from 'ual-reactjs-renderer'
+import { Ledger } from '@arisenual/ledger'
+import { Lynx } from '@arisenual/lynx'
+import { PeepsID } from '@arisenual/peepsid-desktop'
+import { UALProvider, withUAL } from '@arisenual/reactjs-renderer'
 
-import { JsonRpc } from 'eosjs'
+import { JsonRpc } from 'arisensdk'
 import * as React from 'react'
 import ReactDOM from 'react-dom'
 
 const demoTransaction = {
   actions: [{
-    account: 'eosio.token',
+    account: 'arisen.token',
     name: 'transfer',
     authorization: [{
       actor: '', // use account that was logged in
@@ -18,7 +18,7 @@ const demoTransaction = {
     data: {
       from: '', // use account that was logged in
       to: 'example',
-      quantity: '1.0000 EOS',
+      quantity: '1.0000 RIX',
       memo: 'UAL rocks!',
     },
   }],
@@ -175,10 +175,10 @@ TestAppConsumer.displayName = 'TestAppConsumer'
 const appName = 'My App'
 const lynx = new Lynx([exampleNet])
 const ledger = new Ledger([exampleNet])
-const scatter = new Scatter([exampleNet], { appName })
+const peepsid = new PeepsID([exampleNet], { appName })
 
 ReactDOM.render(
-  <UALProvider chains={[exampleNet]} authenticators={[ledger, lynx, scatter]} appName={'My App'}>
+  <UALProvider chains={[exampleNet]} authenticators={[ledger, lynx, peepsid]} appName={'My App'}>
     <TestAppConsumer />
   </UALProvider>,
   document.getElementById('ual-app') as HTMLElement,
